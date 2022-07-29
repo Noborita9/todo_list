@@ -1,8 +1,8 @@
 import datetime
 class Task():
-    def __init__(self, title: str, text: str, urgency: float):
+    def __init__(self, title: str, desc: str, urgency: float):
         self.title = title
-        self.text = text
+        self.desc = desc
         self.urgency = urgency
         self.date_init = datetime.date.today()
         self.date_end = None
@@ -24,8 +24,10 @@ class Task():
 
 def main():
     task_1 = Task("Title", "Text", 0.5)
-    task_1.set_date_end(datetime.datetime(2022, 12, 28).strftime("%Y-%m-%d"))
+    task_1.set_date_end(datetime.date(2022, 12, 28))
     task_1.print_task()
+    print(type(task_1.date_init))
+    print(type(task_1.date_end))
 
 
 if __name__ == "__main__":

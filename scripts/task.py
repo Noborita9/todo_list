@@ -1,6 +1,6 @@
 import datetime
 class Task():
-    def __init__(self, title: str, text: str, urgency: int):
+    def __init__(self, title: str, text: str, urgency: float):
         self.title = title
         self.text = text
         self.urgency = urgency

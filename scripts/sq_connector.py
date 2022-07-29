@@ -1,4 +1,3 @@
-from os import stat
 import sqlite3 as sql
 from state import State
 class Sqlite_Creator():
@@ -8,7 +7,8 @@ class Sqlite_Creator():
 
     def table_exists(self, table_name):
         try:
-            self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='table_name';")
+            format_query = f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table_name}';"
+            self.cursor.execute(format_query)
             self.connection.commit()
             state = State(True, "")
         except Exception as e:

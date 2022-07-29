@@ -1,12 +1,12 @@
 import datetime
 class Task():
-    def __init__(self, title: str, desc: str, urgency: float, completed: bool) -> None:
+    def __init__(self, title: str, desc: str, urgency: float) -> None:
         self.title = title
         self.desc = desc
         self.urgency = urgency
         self.date_init = datetime.date.today()
         self.date_end = None
-        self.completed = completed
+        self.completed = False
 
     def set_title(self, new_title):
         self.title = new_title

@@ -7,7 +7,7 @@ class Task_Manager():
     def get_task(self):
         pass
 
-    def create_task(self, title: str, text: str, urgency: float):
+    def create_task(self, title: str, text: str, urgency: float) -> Task:
         new_task = Task(title, text, urgency)
         return new_task
 

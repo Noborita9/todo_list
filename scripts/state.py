@@ -1,12 +1,34 @@
 class State():
-    def __init__(self, completed: bool = False, err: "str" = "", number: int = 0) -> None:
-        self.completed = completed
-        self.err = err
-        self.number = number 
-        self.init_number()
+    def __init__(self, type: str) -> None:
+        self.completed = False
+        self.err = None
+        self.number = 0
+        self.set_state(type)
 
-    def init_number(self):
-        if self.completed :
-            self.number = 200
-        else:
-            self.number = 404
+    def set_state(self, type: str):
+        states = {
+                "OK": {
+                    "completed": True,
+                    "err": None,
+                    "number": 200,
+                    },
+                "CREATED": {
+                    "completed": True,
+                    "err": None,
+                    "number": 200,
+                    },
+                "FAILED": {
+                    "completed": False,
+                    "err": "Action Failed",
+                    "number": 400,
+                    },
+                "NOTFOUND": {
+                    "completed": False,
+                    "err": "Instance Not Found",
+                    "number": 400,
+                    },
+                }
+        if type in states:
+            self.completed = states[type]["completed"]
+            self.err = states[type]["err"]
+            self.number = states[type]["number"]

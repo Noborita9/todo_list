@@ -19,9 +19,13 @@ class Task_Dao():
             raise e
         return state
 
-    def select_todo(self):
+    def select_todo(self, id: int = -1) :# -> State:
         try:
-            self.cursor.execute("SELECT * from todos")
+            if id == -1 :
+                select_string = "SELECT * from todos"
+            else:
+                select_string = f""
+            self.cursor.execute(select_string)
             rows = self.cursor.fetchall()
             for row in rows:
                 print(row)

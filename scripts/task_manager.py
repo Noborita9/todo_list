@@ -5,11 +5,13 @@ class Task_Manager():
         # self.order = order
         self.td = task_dao(db_name)
 
-    def get_task(self):
-        pass
-
     def create_task(self, title: str, desc: str, urgency: float, id: int) -> State:
         self.td.insert_todo(Task(title, desc, urgency, id))
+        state = State(True, "")
+        return state
+
+    def select_task(self):
+        self.td.select_todo()
         state = State(True, "")
         return state
 

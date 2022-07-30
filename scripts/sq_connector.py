@@ -18,8 +18,8 @@ class Sqlite_Creator():
 
     def create_table(self, table_name: str, query: str) -> State:
         try:
-            if self.table_exists(table_name).completed:
-                return State(False, "Table Already Exists")
+            # if self.table_exists(table_name).completed:
+            #     return State(False, "Table Already Exists")
             format_query = f"CREATE TABLE {table_name} ({query})"
             self.cursor.execute(format_query)
             self.connection.commit()
@@ -44,7 +44,8 @@ class Sqlite_Creator():
 def main():
     pass
     sq_creator = Sqlite_Creator("../todos.db")
-    sq_creator.create_table("todos", "id AUTOINCREMENT, title text, desc text , urgency real, date_init date, date_end date, completed int")
+    sq_creator.create_table("todos", "id int, title text, urgency real, desc text, date_init date, date_end date, completed int")
+    # sq_creator.drop_table("todos")
 
 
 if __name__ == "__main__":

@@ -7,36 +7,40 @@ class Task_Dao():
                                                             sql.PARSE_COLNAMES) 
         self.cursor = self.connection.cursor()
 
-    def insert_todo(self, task: Task):
+    def insert_task(self, task: Task):
         try:
             query = "INSERT INTO todos (id, title, urgency, desc, date_init, date_end, completed) values (?, ?, ?, ?, ?, ?, ?);"
             data_tuple = (task.id, task.title, task.urgency, task.desc, task.date_init, task.date_end, task.completed)
             self.cursor.execute(query, data_tuple )
             self.connection.commit()
-            state = State(True, "")
-        except Exception as e:
-            state = State(False, f"{e}")
+            state = State("OK")
+        except sql.Error as e:
+            state = State("FAILED", [e])
             raise e
         return state
 
-    def select_todo(self, id: int = -1) :# -> State:
+    def select_task(self, id: int = -1) :# -> State:
         try:
             if id == -1 :
                 select_string = "SELECT * from todos;"
             else:
-                select_string = f""
+                select_string = f"SELECT * FROM todos WHERE id = {id}"
             self.cursor.execute(select_string)
             rows = self.cursor.fetchall()
             self.connection.commit()
-        except Exception as e:
+            state = State("OK", rows)
+        except sql.Error as e:
+            state = State("NOTFOUND", [e])
             raise e
+        return state
+            
 
-    def delete_todo(self, id: int) -> State:
+    def delete_task(self, id: int) -> State:
         try:
             self.cursor.execute(f"DELETE FROM todos WHERE id={id}")
             self.connection.commit()
-            state = State(True, "")
+            state = State("OK")
         except sql.Error as e:
-            state = State(False, f"{e}")
+            state = State("FAILED", [e])
             raise e
         return state

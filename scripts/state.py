@@ -1,11 +1,12 @@
 class State():
-    def __init__(self, type: str) -> None:
+    def __init__(self, type: str, val: list = []) -> None:
         self.completed = False
         self.err = None
         self.number = 0
+        self.val = val
         self.set_state(type)
 
-    def set_state(self, type: str):
+    def set_state(self, type: str) -> None:
         states = {
                 "OK": {
                     "completed": True,

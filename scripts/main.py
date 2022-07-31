@@ -2,7 +2,7 @@ from menu import Menu
 
 
 def main():
-    session = Menu("../todos.db")
+    session = Menu("todos.db")
     session.start()
 
 

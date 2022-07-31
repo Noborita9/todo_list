@@ -24,7 +24,7 @@ class Menu():
         self.cached = True
 
     def order_tasks(self):
-        self.actual_tasks = sorted(self.actual_tasks, key=lambda task: task[3])
+        self.actual_tasks = sorted(self.actual_tasks, key=lambda task: task[3], reverse=True)
         self.is_ordered = True
         
 
@@ -60,7 +60,7 @@ class Menu():
         self.is_ordered = False
 
     def show(self, actual: int = 0):
-        print("Your Tasks: ")
+        print("Your Tasks: [c]reate [d]elete [ ]open [q]exit")
         if not self.cached:
             self.get_tasks()
         if not self.is_ordered:

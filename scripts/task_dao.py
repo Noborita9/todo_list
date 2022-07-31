@@ -1,11 +1,13 @@
 import sqlite3 as sql
 from state import State
 from task import Task
+import os.path
 
 
 class Task_Dao():
     def __init__(self, db_name: str) -> None:
-        self.connection = sql.connect(db_name, detect_types=sql.PARSE_DECLTYPES |
+        self.db_name = os.path.expanduser(f"~/proyectos/todo_list/scripts/{db_name}")
+        self.connection = sql.connect(self.db_name, detect_types=sql.PARSE_DECLTYPES |
                                       sql.PARSE_COLNAMES)
         self.cursor = self.connection.cursor()
 

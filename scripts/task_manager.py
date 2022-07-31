@@ -4,7 +4,6 @@ from task_dao import State, Task_Dao as task_dao
 
 class Task_Manager():
     def __init__(self, db_name: str) -> None:
-        # self.order = order
         self.td = task_dao(db_name)
 
     def create_task(self, id: int, title: str, desc: str, urgency: float) -> State:

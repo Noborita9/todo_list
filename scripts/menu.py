@@ -39,11 +39,12 @@ class Menu():
         title = input("Task's Title: ")
         desc = input("Task's Content:\n")
         urgency = float(input("Task's Urgency: "))
-        self.tm.create_task(5, title, desc, urgency)
+        self.tm.create_task(0, title=title, desc=desc, urgency=urgency)
         self.cached = False
 
     def delete_task(self):
-        self.tm.delete_task(self.task_number)
+        del_task_num = self.actual_tasks[self.task_number][0]
+        self.tm.delete_task(del_task_num)
         self.cached = False
 
     def show(self, actual: int = 0):

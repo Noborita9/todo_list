@@ -15,9 +15,6 @@ class Task_Manager():
         state = self.td.select_task(id)
         return state.val
 
-    def save_task(self):
-        pass
-
     def delete_task(self, id: int):
         state = self.td.delete_task(id)
         return state

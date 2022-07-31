@@ -5,8 +5,8 @@ class Task_Manager():
         # self.order = order
         self.td = task_dao(db_name)
 
-    def create_task(self, title: str, desc: str, urgency: float, id: int) -> State:
-        state = self.td.insert_task(Task(title, desc, urgency, id))
+    def create_task(self, id: int, title: str, desc: str, urgency: float) -> State:
+        state = self.td.insert_task(Task(id, title, desc, urgency))
         return state
 
     def select_task(self, id: int = -1) -> list:
@@ -19,3 +19,4 @@ class Task_Manager():
 
     def delete_task(self):
         pass
+

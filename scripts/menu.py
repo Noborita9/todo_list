@@ -5,6 +5,7 @@ from task import Task
 
 # TODO: Cache system so its faster :D
 
+
 class Menu():
     def __init__(self, db_name: str) -> None:
         self.tm = Task_Manager(db_name)
@@ -24,9 +25,9 @@ class Menu():
         self.cached = True
 
     def order_tasks(self):
-        self.actual_tasks = sorted(self.actual_tasks, key=lambda task: task[3], reverse=True)
+        self.actual_tasks = sorted(
+            self.actual_tasks, key=lambda task: task[3], reverse=True)
         self.is_ordered = True
-        
 
     def format_task(self, task: tuple) -> Task:
         new_task = Task(task[0], task[1], task[2],

@@ -3,14 +3,14 @@ import uuid
 
 
 class Task():
-    def __init__(self, id: int = 0 ,
+    def __init__(self, id: int = 0,
                  title: str = "UNNAMED",
-                 desc: str = "UNDEFINED", 
+                 desc: str = "UNDEFINED",
                  urgency: float = 0.0,
                  date_init: datetime.date = datetime.date.today(),
                  date_end: datetime.date = datetime.date.today(),
                  completed: bool = False) -> None:
-        self.id = self.generate_id(id) 
+        self.id = self.generate_id(id)
         self.title = title
         self.desc = desc
         self.urgency = urgency
